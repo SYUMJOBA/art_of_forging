@@ -1,8 +1,13 @@
 package net.acetheeldritchking.art_of_forging.capabilities.conquer;
 
+import com.mojang.serialization.Codec;
 import net.minecraft.nbt.CompoundTag;
 
 public class PlayerConquer {
+    public static final Codec<PlayerConquer> CODEC = Codec.INT.xmap(
+            i -> { PlayerConquer p = new PlayerConquer(); p.setConquer(i); return p; },
+            PlayerConquer::getConquer);
+
     private int conquer;
     private final int MAX_CONQUER = 5;
     private final int MIN_CONQUER = 0;

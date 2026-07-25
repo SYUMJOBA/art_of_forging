@@ -1,0 +1,29 @@
+{
+    "display": {
+        "icon": {
+            "id": "tetra:scroll_rolled"
+        },
+        "title": {
+            "translate": "tetra.advancements.scrolls.root.title"
+        },
+        "description": {
+            "translate": "tetra.advancements.scrolls.root.description"
+        },
+        "background": "minecraft:textures/block/obsidian.png",
+        "announce_to_chat": false
+    },
+    "criteria": {
+        "find": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "tetra:scroll_rolled"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

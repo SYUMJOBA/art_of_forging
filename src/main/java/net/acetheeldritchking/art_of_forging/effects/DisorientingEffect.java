@@ -5,14 +5,14 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MobType;
+import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.event.entity.living.LivingDamageEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.bus.api.SubscribeEvent;
 import se.mickelus.tetra.blocks.workbench.gui.WorkbenchStatsGui;
 import se.mickelus.tetra.gui.stats.StatsHelper;
 import se.mickelus.tetra.gui.stats.bar.GuiStatBar;
@@ -40,7 +40,7 @@ public class DisorientingEffect {
     }
 
     @SubscribeEvent
-    public void onLivingAttackEvent(LivingDamageEvent event)
+    public void onLivingAttackEvent(LivingDamageEvent.Pre event)
     {
         LivingEntity target = event.getEntity();
         Entity attackingEntity = event.getSource().getEntity();
@@ -57,7 +57,7 @@ public class DisorientingEffect {
                 int eff = (int) item.getEffectEfficiency(heldStack, disorientingEffect);
 
                 // Apply potion effects
-                if (level > 0 && !MobType.UNDEAD.equals(target.getMobType()))
+                if (level > 0 && !target.getType().is(EntityTypeTags.UNDEAD))
                 {
                     if (target instanceof Player)
                     {
@@ -70,7 +70,7 @@ public class DisorientingEffect {
                         applyEffects(level, eff, creeper);
                         // Stop creeper from exploding
                         // 5X the duration of effect to actually stop the creeper from exploding
-                        creeper.addEffect(new MobEffectInstance(PotionEffects.DEFUSE_CREEPER.get(), eff*100,
+                        creeper.addEffect(new MobEffectInstance(PotionEffects.DEFUSE_CREEPER, eff*100,
                                 2, false, false, false));
                     }
                     else

@@ -3,10 +3,10 @@ package net.acetheeldritchking.art_of_forging.effects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.event.entity.living.LivingDamageEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.bus.api.SubscribeEvent;
 import se.mickelus.tetra.blocks.workbench.gui.WorkbenchStatsGui;
 import se.mickelus.tetra.gui.stats.StatsHelper;
 import se.mickelus.tetra.gui.stats.bar.GuiStatBar;
@@ -33,7 +33,7 @@ public class VengeanceEffect {
     }
 
     @SubscribeEvent
-    public void onLivingAttackEvent(LivingDamageEvent event) {
+    public void onLivingAttackEvent(LivingDamageEvent.Pre event) {
         Entity attackingEntity = event.getSource().getEntity();
 
         if (attackingEntity instanceof LivingEntity attacker) {
@@ -47,14 +47,14 @@ public class VengeanceEffect {
                 float eff = item.getEffectEfficiency(heldStack, vengeanceEffect);
 
                 // Base attack damage
-                float baseAmount = event.getAmount();
+                float baseAmount = event.getNewDamage();
                 // Bonus damage as a percent
                 float bonusDamage = baseAmount * ((float) level / 100);
                 // Attacker health
                 float health = attacker.getHealth();
 
                 if (level > 0 && eff >= health) {
-                    event.setAmount(baseAmount + bonusDamage);
+                    event.setNewDamage(baseAmount + bonusDamage);
                 }
             }
         }

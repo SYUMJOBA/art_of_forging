@@ -1,0 +1,46 @@
+{
+    "display": {
+        "icon": {
+            "id": "tetra:modular_bow"
+        },
+        "frame": "goal",
+        "title": {
+            "translate": "tetra.advancements.art_of_forging.dreadnought_upgrade.title"
+        },
+        "description": {
+            "translate": "tetra.advancements.art_of_forging.dreadnought_upgrade.description"
+        },
+        "hidden": true
+    },
+    "parent": "tetra:art_of_forging/root",
+    "criteria": {
+        "module": {
+            "trigger": "tetra:craft_module",
+            "conditions": {
+                "module": "bow/dreadnought_stave",
+                "after": {
+                    "items": [
+                        "tetra:modular_bow"
+                    ]
+                }
+            }
+        },
+        "improvement": {
+            "trigger": "tetra:craft_improvement",
+            "conditions": {
+                "improvement": "bow/dreadnought_stave",
+                "after": {
+                    "items": [
+                        "tetra:modular_bow"
+                    ]
+                }
+            }
+        }
+    },
+    "requirements": [
+        [
+            "module",
+            "improvement"
+        ]
+    ]
+}

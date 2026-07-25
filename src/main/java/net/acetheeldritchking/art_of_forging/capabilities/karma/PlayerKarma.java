@@ -1,8 +1,13 @@
 package net.acetheeldritchking.art_of_forging.capabilities.karma;
 
+import com.mojang.serialization.Codec;
 import net.minecraft.nbt.CompoundTag;
 
 public class PlayerKarma {
+    public static final Codec<PlayerKarma> CODEC = Codec.INT.xmap(
+            i -> { PlayerKarma p = new PlayerKarma(); p.setKarma(i); return p; },
+            PlayerKarma::getKarma);
+
     private int karma;
     private final int MAX_KARMA = 5;
     private final int MIN_KARMA = -5;

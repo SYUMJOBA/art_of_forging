@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " s ",
+        "sbs",
+        " s "
+    ],
+    "key": {
+        "s": {
+            "item": "art_of_forging:shards_of_malice"
+        },
+        "b": {
+            "item": "art_of_forging:ancient_blade"
+        }
+    },
+    "result": {
+        "count": 1,
+        "id": "art_of_forging:demonic_blade"
+    }
+}

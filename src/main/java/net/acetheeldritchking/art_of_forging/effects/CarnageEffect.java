@@ -1,16 +1,17 @@
 package net.acetheeldritchking.art_of_forging.effects;
 
-import net.acetheeldritchking.art_of_forging.capabilities.carnage.PlayerCarnageProvider;
+import net.acetheeldritchking.art_of_forging.AoFAttachments;
+
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.event.entity.living.LivingDamageEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.bus.api.SubscribeEvent;
 import se.mickelus.tetra.blocks.workbench.gui.WorkbenchStatsGui;
 import se.mickelus.tetra.gui.stats.bar.GuiStatBar;
 import se.mickelus.tetra.gui.stats.getter.IStatGetter;
@@ -36,7 +37,7 @@ public class CarnageEffect {
     }
 
     @SubscribeEvent
-    public void onLivingAttackEvent(LivingDamageEvent event) {
+    public void onLivingAttackEvent(LivingDamageEvent.Pre event) {
         //LivingEntity target = event.getEntity();
         Entity attackingEntity = event.getSource().getEntity();
 
@@ -51,7 +52,7 @@ public class CarnageEffect {
                 float eff = item.getEffectEfficiency(heldStack, carnageEffect);
 
                 // Base attack damage
-                float baseAmount = event.getAmount();
+                float baseAmount = event.getNewDamage();
                 /*
                  *  Bonus damage as a percent.
                  *  Damage specified in the JSON file will be the starting
@@ -63,7 +64,7 @@ public class CarnageEffect {
                 float bonusDamage = baseAmount * (eff / 100);
 
                 if (level > 0 && attacker instanceof Player player) {
-                    player.getCapability(PlayerCarnageProvider.PLAYER_CARNAGE).ifPresent(carnage -> {
+                    java.util.Optional.of(player.getData(AoFAttachments.CARNAGE)).ifPresent(carnage -> {
                         // System.out.println("Current level of carnage: " + carnage.getCarnage());
                         carnage.addCarnage(1);
 
@@ -72,31 +73,31 @@ public class CarnageEffect {
                             case 1 -> {
                                 // System.out.println("Case 1");
 
-                                event.setAmount(baseAmount);
+                                event.setNewDamage(baseAmount);
                                 break;
                             }
                             case 2 -> {
                                 // System.out.println("Case 2");
 
-                                event.setAmount((baseAmount + bonusDamage));
+                                event.setNewDamage((baseAmount + bonusDamage));
                                 break;
                             }
                             case 3 -> {
                                 // System.out.println("Case 3");
 
-                                event.setAmount((baseAmount + bonusDamage) + addedPercent(baseAmount, 0.10F));
+                                event.setNewDamage((baseAmount + bonusDamage) + addedPercent(baseAmount, 0.10F));
                                 break;
                             }
                             case 4 -> {
                                 // System.out.println("Case 4");
 
-                                event.setAmount((baseAmount + bonusDamage) + addedPercent(baseAmount, 0.20F));
+                                event.setNewDamage((baseAmount + bonusDamage) + addedPercent(baseAmount, 0.20F));
                                 break;
                             }
                             case 5 -> {
                                 // System.out.println("Case 5");
 
-                                event.setAmount((baseAmount + bonusDamage) + addedPercent(baseAmount, 0.30F));
+                                event.setNewDamage((baseAmount + bonusDamage) + addedPercent(baseAmount, 0.30F));
 
                                 // Play Sounds
                                 player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.RAVAGER_ROAR, SoundSource.PLAYERS, 1.0F, 0.5F);

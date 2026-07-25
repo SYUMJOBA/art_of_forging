@@ -1,8 +1,13 @@
 package net.acetheeldritchking.art_of_forging.capabilities.devouring;
 
+import com.mojang.serialization.Codec;
 import net.minecraft.nbt.CompoundTag;
 
 public class PlayerDevouring {
+    public static final Codec<PlayerDevouring> CODEC = Codec.INT.xmap(
+            i -> { PlayerDevouring p = new PlayerDevouring(); p.setDevour(i); return p; },
+            PlayerDevouring::getDevour);
+
     private int devour;
     private final int MAX_DEVOUR = 30;
     private final int MIN_DEVOUR = 0;

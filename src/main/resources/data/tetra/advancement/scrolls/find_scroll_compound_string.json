@@ -1,0 +1,28 @@
+{
+    "display": {
+        "icon": {
+            "id": "tetra:scroll_rolled"
+        },
+        "title": {
+            "translate": "tetra.advancements.scrolls.find_scroll_compound_string.title"
+        },
+        "description": {
+            "translate": "tetra.advancements.scrolls.find_scroll_compound_string.description"
+        }
+    },
+    "parent": "tetra:scrolls/root",
+    "criteria": {
+        "find": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "tetra:scroll_rolled"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

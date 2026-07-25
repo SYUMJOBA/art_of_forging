@@ -1,8 +1,13 @@
 package net.acetheeldritchking.art_of_forging.capabilities.carnage;
 
+import com.mojang.serialization.Codec;
 import net.minecraft.nbt.CompoundTag;
 
 public class PlayerCarnage {
+    public static final Codec<PlayerCarnage> CODEC = Codec.INT.xmap(
+            i -> { PlayerCarnage p = new PlayerCarnage(); p.setCarnage(i); return p; },
+            PlayerCarnage::getCarnage);
+
     private int carnage;
     private final int MAX_CARNAGE = 5;
     private final int MIN_CARNAGE = 0;

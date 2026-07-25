@@ -1,24 +1,12 @@
 package net.acetheeldritchking.art_of_forging.item.modular;
 
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.registries.ObjectHolder;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import se.mickelus.tetra.gui.GuiModuleOffsets;
 import se.mickelus.tetra.items.modular.ModularItem;
-import se.mickelus.tetra.module.ItemModule;
-import se.mickelus.tetra.module.ItemUpgradeRegistry;
-import se.mickelus.tetra.module.schematic.RemoveSchematic;
 import top.theillusivec4.curios.api.type.capability.ICurio;
-
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Objects;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class ModularArtifact extends ModularItem implements ICurio {
     public final static String artifactCasing = "artifact/casing";
@@ -31,12 +19,6 @@ public class ModularArtifact extends ModularItem implements ICurio {
     private static final GuiModuleOffsets majorOffsets = new GuiModuleOffsets(-13, -1, 3, 19);
     private static final GuiModuleOffsets minorOffsets = new GuiModuleOffsets(6, 1);
 
-    @ObjectHolder(
-            registryName = "item",
-            value = "tetra:modular_artifact"
-    )
-    public static ModularArtifact instance;
-
     public ModularArtifact() {
         super(new Item.Properties().stacksTo(1).fireResistant());
 
@@ -47,32 +29,22 @@ public class ModularArtifact extends ModularItem implements ICurio {
 
         requiredModules = new String[]{artifactCasing, artifactInternal};
 
-        RemoveSchematic.registerRemoveSchematics(this, identifier);
+        // The remove schematic is registered globally by Tetra (SchematicRegistry) on 1.21,
+        // so it no longer needs to be registered per-item here.
     }
 
-    @Override
-    public Collection<ItemModule> getAllModules(ItemStack stack) {
-        CompoundTag stackTag = stack.getTag();
-        if (stackTag != null) {
-            return Stream.concat(Arrays.stream(getMajorModuleKeys()), Arrays.stream(getMinorModuleKeys()))
-                    .map(stackTag::getString)
-                    .map(ItemUpgradeRegistry.instance::getModule)
-                    .filter(Objects::nonNull)
-                    .collect(Collectors.toList());
-        }
-
-        return Collections.emptyList();
-    }
+    // getAllModules is inherited from IModularItem's default implementation, which reads
+    // the module keys from the stack's data components on 1.21.
 
     @Override
     @OnlyIn(Dist.CLIENT)
-    public GuiModuleOffsets getMajorGuiOffsets() {
+    public GuiModuleOffsets getMajorGuiOffsets(ItemStack itemStack) {
         return majorOffsets;
     }
 
     @Override
     @OnlyIn(Dist.CLIENT)
-    public GuiModuleOffsets getMinorGuiOffsets() {
+    public GuiModuleOffsets getMinorGuiOffsets(ItemStack itemStack) {
         return minorOffsets;
     }
 

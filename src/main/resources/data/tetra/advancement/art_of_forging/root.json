@@ -1,0 +1,75 @@
+{
+    "display": {
+        "icon": {
+            "id": "tetra:modular_double"
+        },
+        "title": {
+            "translate": "tetra.advancements.art_of_forging.intro.title"
+        },
+        "description": {
+            "translate": "tetra.advancements.art_of_forging.intro.description"
+        },
+        "background": "minecraft:textures/block/polished_blackstone_bricks.png"
+    },
+    "criteria": {
+        "sword": {
+            "trigger": "tetra:craft_module",
+            "conditions": {
+                "after": {
+                    "items": [
+                        "tetra:modular_sword"
+                    ]
+                }
+            }
+        },
+        "double": {
+            "trigger": "tetra:craft_module",
+            "conditions": {
+                "after": {
+                    "items": [
+                        "tetra:modular_double"
+                    ]
+                }
+            }
+        },
+        "single": {
+            "trigger": "tetra:craft_module",
+            "conditions": {
+                "after": {
+                    "items": [
+                        "tetra:modular_single"
+                    ]
+                }
+            }
+        },
+        "bow": {
+            "trigger": "tetra:craft_module",
+            "conditions": {
+                "after": {
+                    "items": [
+                        "tetra:modular_bow"
+                    ]
+                }
+            }
+        },
+        "crossbow": {
+            "trigger": "tetra:craft_module",
+            "conditions": {
+                "after": {
+                    "items": [
+                        "tetra:modular_crossbow"
+                    ]
+                }
+            }
+        }
+    },
+    "requirements": [
+        [
+            "sword",
+            "double",
+            "single",
+            "bow",
+            "crossbow"
+        ]
+    ]
+}

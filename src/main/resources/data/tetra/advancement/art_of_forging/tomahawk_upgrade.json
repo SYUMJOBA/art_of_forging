@@ -1,0 +1,44 @@
+{
+    "display": {
+        "icon": {
+            "id": "tetra:modular_double"
+        },
+        "title": {
+            "translate": "tetra.advancements.art_of_forging.tomahawk_upgrade.title"
+        },
+        "description": {
+            "translate": "tetra.advancements.art_of_forging.tomahawk_upgrade.description"
+        }
+    },
+    "parent": "tetra:art_of_forging/root",
+    "criteria": {
+        "module": {
+            "trigger": "tetra:craft_module",
+            "conditions": {
+                "module": "double/tomahawk",
+                "after": {
+                    "items": [
+                        "tetra:modular_double"
+                    ]
+                }
+            }
+        },
+        "improvement": {
+            "trigger": "tetra:craft_improvement",
+            "conditions": {
+                "improvement": "double/tomahawk",
+                "after": {
+                    "items": [
+                        "tetra:modular_double"
+                    ]
+                }
+            }
+        }
+    },
+    "requirements": [
+        [
+            "module",
+            "improvement"
+        ]
+    ]
+}

@@ -4,10 +4,10 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.event.entity.living.LivingDamageEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.bus.api.SubscribeEvent;
 import se.mickelus.tetra.blocks.workbench.gui.WorkbenchStatsGui;
 import se.mickelus.tetra.gui.stats.bar.GuiStatBar;
 import se.mickelus.tetra.gui.stats.getter.*;
@@ -31,7 +31,7 @@ public class GoliathSlayerEffect {
     }
 
     @SubscribeEvent
-    public void onLivingAttackEvent(LivingDamageEvent event)
+    public void onLivingAttackEvent(LivingDamageEvent.Pre event)
     {
         Entity attackingEntity = event.getSource().getEntity();
         LivingEntity target = event.getEntity();
@@ -46,7 +46,7 @@ public class GoliathSlayerEffect {
                 double level = item.getEffectLevel(heldStack, goliathSlayerEffect);
 
                 // Base attack damage
-                float baseAmount = event.getAmount();
+                float baseAmount = event.getNewDamage();
                 // Bonus damage as a percent
                 float bonusDamage = getDecimalPercentage((float) level, baseAmount);
 
@@ -55,7 +55,7 @@ public class GoliathSlayerEffect {
                     System.out.println("Base: " + baseAmount);
                     System.out.println("Bonus: " + bonusDamage);
                     System.out.println("Total: " + getExactPercentage(baseAmount, bonusDamage));
-                    event.setAmount(getExactPercentage(baseAmount, bonusDamage));
+                    event.setNewDamage(getExactPercentage(baseAmount, bonusDamage));
                 }
             }
         }

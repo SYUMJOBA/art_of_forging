@@ -1,0 +1,29 @@
+{
+    "display": {
+        "icon": {
+            "id": "tetra:modular_sword"
+        },
+        "title": {
+            "translate": "tetra.advancements.art_of_forging.architects_crucible.title"
+        },
+        "description": {
+            "translate": "tetra.advancements.art_of_forging.architects_crucible.description"
+        },
+        "frame": "challenge",
+        "hidden": true
+    },
+    "parent": "tetra:art_of_forging/crucible_upgrade",
+    "criteria": {
+        "architect_imprv": {
+            "trigger": "tetra:craft_improvement",
+            "conditions": {
+                "improvement": "sword/architect_imprv"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "architect_imprv"
+        ]
+    ]
+}
