@@ -46,7 +46,7 @@
    },
    "models": [
     {
-     "location": "tetra:items/module/sword/blade/void_worm_cleaver/void_worm_cleaver"
+     "location": "tetra:item/module/sword/blade/void_worm_cleaver/void_worm_cleaver"
     }
    ]
   }

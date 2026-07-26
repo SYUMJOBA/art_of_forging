@@ -48,7 +48,7 @@
     ],
     "models": [
      {
-      "location": "tetra:items/module/crossbow/stave/heavy_stave/"
+      "location": "tetra:item/module/crossbow/stave/heavy_stave/"
      }
     ]
    }

@@ -54,21 +54,21 @@
     ],
     "models": [
      {
-      "location": "tetra:items/module/bow/stave/dreadnought/"
+      "location": "tetra:item/module/bow/stave/dreadnought/"
      },
      {
       "type": "tetra:filtered_grid_texture",
-      "location": "tetra:items/module/bow/stave/dreadnought/",
+      "location": "tetra:item/module/bow/stave/dreadnought/",
       "filter": "draw_0"
      },
      {
       "type": "tetra:filtered_grid_texture",
-      "location": "tetra:items/module/bow/stave/dreadnought/1_",
+      "location": "tetra:item/module/bow/stave/dreadnought/1_",
       "filter": "draw_1"
      },
      {
       "type": "tetra:filtered_grid_texture",
-      "location": "tetra:items/module/bow/stave/dreadnought/1_",
+      "location": "tetra:item/module/bow/stave/dreadnought/1_",
       "filter": "draw_2"
      }
     ]

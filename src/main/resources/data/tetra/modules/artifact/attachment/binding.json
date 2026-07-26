@@ -24,7 +24,7 @@
     ],
     "models": [
      {
-      "location": "tetra:items/module/artifact/attachment/binding/"
+      "location": "tetra:item/module/artifact/attachment/binding/"
      }
     ]
    }

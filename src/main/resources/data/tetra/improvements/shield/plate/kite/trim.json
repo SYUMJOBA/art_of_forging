@@ -9,8 +9,10 @@
   "durability": 5,
   "models": [
    {
-    "location": "tetra:items/module/shield/plate/kite/improvements/trim_bevel",
-    "tint": "inherit"
+    "tint": "inherit",
+    "type": "tetra:shield",
+    "model": "tetra:plate/kite",
+    "texture": "tetra:item/module/shield/plate/kite/improvements/trim_bevel"
    }
   ],
   "extract": {
@@ -20,7 +22,9 @@
    ],
    "models": [
     {
-     "location": "tetra:items/module/shield/plate/kite/improvements/"
+     "type": "tetra:shield",
+     "model": "tetra:plate/kite",
+     "texture": "tetra:item/module/shield/plate/kite/improvements/"
     }
    ]
   }
@@ -35,8 +39,10 @@
   "durability": 10,
   "models": [
    {
-    "location": "tetra:items/module/shield/plate/kite/improvements/trim_shadow",
-    "tint": "inherit"
+    "tint": "inherit",
+    "type": "tetra:shield",
+    "model": "tetra:plate/kite",
+    "texture": "tetra:item/module/shield/plate/kite/improvements/trim_shadow"
    }
   ],
   "extract": {
@@ -46,7 +52,9 @@
    ],
    "models": [
     {
-     "location": "tetra:items/module/shield/plate/kite/improvements/"
+     "type": "tetra:shield",
+     "model": "tetra:plate/kite",
+     "texture": "tetra:item/module/shield/plate/kite/improvements/"
     }
    ]
   }
@@ -58,11 +66,15 @@
   "durability": 120,
   "models": [
    {
-    "location": "tetra:items/module/shield/plate/kite/improvements/trim_scrap"
+    "type": "tetra:shield",
+    "model": "tetra:plate/kite",
+    "texture": "tetra:item/module/shield/plate/kite/improvements/trim_scrap"
    },
    {
-    "location": "tetra:items/module/shield/plate/kite/improvements/trim_scrap_bevel",
-    "tint": "inherit"
+    "tint": "inherit",
+    "type": "tetra:shield",
+    "model": "tetra:plate/kite",
+    "texture": "tetra:item/module/shield/plate/kite/improvements/trim_scrap_bevel"
    }
   ]
  }

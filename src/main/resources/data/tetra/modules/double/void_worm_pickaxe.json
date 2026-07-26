@@ -50,7 +50,7 @@
    },
    "models": [
     {
-     "location": "tetra:items/module/double/head/void_worm_pickaxe/void_worm_pickaxe"
+     "location": "tetra:item/module/double/head/void_worm_pickaxe/void_worm_pickaxe"
     }
    ]
   }
