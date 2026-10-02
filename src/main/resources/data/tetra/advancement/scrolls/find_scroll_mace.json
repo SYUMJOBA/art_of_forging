@@ -1,7 +1,25 @@
 {
     "display": {
         "icon": {
-            "id": "tetra:scroll_rolled"
+            "id": "tetra:scroll_rolled",
+            "components": {
+                "tetra:scroll_data": {
+                    "key": "single/head/mace_head/mace_head",
+                    "details": "art_of_forging",
+                    "intricate": false,
+                    "material": 1,
+                    "ribbon": "560060",
+                    "glyphs": [
+                        9,
+                        3,
+                        6,
+                        2
+                    ],
+                    "schematics": [
+                        "tetra:single/head/mace_head/mace_head"
+                    ]
+                }
+            }
         },
         "title": {
             "translate": "tetra.advancements.scrolls.find_scroll_mace.title"
@@ -19,7 +37,12 @@
                     {
                         "items": [
                             "tetra:scroll_rolled"
-                        ]
+                        ],
+                        "predicates": {
+                            "tetra:scroll_data": {
+                                "key": "single/head/mace_head/mace_head"
+                            }
+                        }
                     }
                 ]
             }

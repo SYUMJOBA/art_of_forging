@@ -1,7 +1,25 @@
 {
     "display": {
         "icon": {
-            "id": "tetra:scroll_rolled"
+            "id": "tetra:scroll_rolled",
+            "components": {
+                "tetra:scroll_data": {
+                    "key": "utilize/hammer",
+                    "details": "art_of_forging",
+                    "intricate": false,
+                    "material": 2,
+                    "ribbon": "fa97e9",
+                    "glyphs": [
+                        1,
+                        15,
+                        12,
+                        8
+                    ],
+                    "schematics": [
+                        "tetra:utilize/hammer"
+                    ]
+                }
+            }
         },
         "title": {
             "translate": "tetra.advancements.scrolls.get_scroll_quarry_hammer.title"
@@ -19,7 +37,12 @@
                     {
                         "items": [
                             "tetra:scroll_rolled"
-                        ]
+                        ],
+                        "predicates": {
+                            "tetra:scroll_data": {
+                                "key": "utilize/hammer"
+                            }
+                        }
                     }
                 ]
             }

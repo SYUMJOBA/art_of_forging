@@ -1,7 +1,26 @@
 {
     "display": {
         "icon": {
-            "id": "tetra:scroll_rolled"
+            "id": "tetra:scroll_rolled",
+            "components": {
+                "tetra:scroll_data": {
+                    "key": "sword/crucible/architects_crucible_blade",
+                    "details": "true_crucible",
+                    "intricate": true,
+                    "material": 2,
+                    "ribbon": "ff0042",
+                    "glyphs": [
+                        8,
+                        7,
+                        9,
+                        2
+                    ],
+                    "schematics": [
+                        "tetra:sword/crucible_blade",
+                        "tetra:sword/crucible/architects_crucible_blade"
+                    ]
+                }
+            }
         },
         "frame": "challenge",
         "title": {
@@ -21,7 +40,12 @@
                     {
                         "items": [
                             "tetra:scroll_rolled"
-                        ]
+                        ],
+                        "predicates": {
+                            "tetra:scroll_data": {
+                                "key": "sword/crucible/architects_crucible_blade"
+                            }
+                        }
                     }
                 ]
             }

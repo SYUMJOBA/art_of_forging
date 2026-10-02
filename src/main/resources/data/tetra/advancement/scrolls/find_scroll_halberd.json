@@ -1,7 +1,25 @@
 {
     "display": {
         "icon": {
-            "id": "tetra:scroll_rolled"
+            "id": "tetra:scroll_rolled",
+            "components": {
+                "tetra:scroll_data": {
+                    "key": "single/head/halberd_head/halberd_head",
+                    "details": "art_of_forging",
+                    "intricate": false,
+                    "material": 1,
+                    "ribbon": "444aff",
+                    "glyphs": [
+                        8,
+                        1,
+                        4,
+                        5
+                    ],
+                    "schematics": [
+                        "tetra:single/head/halberd_head/halberd_head"
+                    ]
+                }
+            }
         },
         "title": {
             "translate": "tetra.advancements.scrolls.find_scroll_halberd.title"
@@ -19,7 +37,12 @@
                     {
                         "items": [
                             "tetra:scroll_rolled"
-                        ]
+                        ],
+                        "predicates": {
+                            "tetra:scroll_data": {
+                                "key": "single/head/halberd_head/halberd_head"
+                            }
+                        }
                     }
                 ]
             }

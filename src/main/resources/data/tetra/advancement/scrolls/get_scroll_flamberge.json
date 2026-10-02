@@ -1,7 +1,25 @@
 {
     "display": {
         "icon": {
-            "id": "tetra:scroll_rolled"
+            "id": "tetra:scroll_rolled",
+            "components": {
+                "tetra:scroll_data": {
+                    "key": "tetra/flamberge_blade",
+                    "details": "art_of_forging",
+                    "intricate": false,
+                    "material": 2,
+                    "ribbon": "ff9612",
+                    "glyphs": [
+                        6,
+                        15,
+                        4,
+                        7
+                    ],
+                    "schematics": [
+                        "tetra:sword/flamberge_blade"
+                    ]
+                }
+            }
         },
         "frame": "goal",
         "title": {
@@ -20,7 +38,12 @@
                     {
                         "items": [
                             "tetra:scroll_rolled"
-                        ]
+                        ],
+                        "predicates": {
+                            "tetra:scroll_data": {
+                                "key": "tetra/flamberge_blade"
+                            }
+                        }
                     }
                 ]
             }
