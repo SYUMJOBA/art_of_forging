@@ -13,7 +13,7 @@ public class DevouringPotionEffect extends MobEffect {
     }
 
     @Override
-    public void applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
+    public boolean applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
         pLivingEntity.hurt(pLivingEntity.damageSources().magic(), pAmplifier);
 
         if (!pLivingEntity.level().isClientSide) {
@@ -23,10 +23,11 @@ public class DevouringPotionEffect extends MobEffect {
                             (new Vector3f(0.5F, 0.18F, 0.18F), new Vector3f(0.95F, 0.1F, 0.1F), 1.5F),
                     pLivingEntity.getX(), pLivingEntity.getY(0.5), pLivingEntity.getZ(), 25, 0.5D, 0.3D, 0.5D, 0.0D);
         }
+        return true;
     }
 
     @Override
-    public boolean isDurationEffectTick(int pDuration, int pAmplifier) {
+    public boolean shouldApplyEffectTickThisTick(int pDuration, int pAmplifier) {
         return pDuration % 10 == 0;
     }
 }

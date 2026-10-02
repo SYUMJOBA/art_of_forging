@@ -1,0 +1,29 @@
+{
+    "display": {
+        "icon": {
+            "id": "tetra:modular_sword"
+        },
+        "title": {
+            "translate": "tetra.advancements.art_of_forging.murasama_blade.title"
+        },
+        "description": {
+            "translate": "tetra.advancements.art_of_forging.murasama_blade.description"
+        },
+        "frame": "challenge",
+        "hidden": true
+    },
+    "parent": "tetra:art_of_forging/katana_upgrade",
+    "criteria": {
+        "murasama_imprv": {
+            "trigger": "tetra:craft_improvement",
+            "conditions": {
+                "improvement": "sword/murasama_imprv"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "murasama_imprv"
+        ]
+    ]
+}

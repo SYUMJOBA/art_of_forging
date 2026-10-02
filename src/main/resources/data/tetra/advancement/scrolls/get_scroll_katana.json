@@ -1,0 +1,53 @@
+{
+    "display": {
+        "icon": {
+            "id": "tetra:scroll_rolled",
+            "components": {
+                "tetra:scroll_data": {
+                    "key": "sword/katana/katana_blade",
+                    "details": "art_of_forging",
+                    "intricate": false,
+                    "material": 2,
+                    "ribbon": "dbff10",
+                    "glyphs": [
+                        5,
+                        10,
+                        13,
+                        2
+                    ],
+                    "schematics": [
+                        "tetra:sword/katana/katana_blade",
+                        "tetra:sword/tsuba_guard"
+                    ]
+                }
+            }
+        },
+        "frame": "goal",
+        "title": {
+            "translate": "tetra.advancements.scrolls.get_scroll_katana.title"
+        },
+        "description": {
+            "translate": "tetra.advancements.scrolls.get_scroll_katana.description"
+        }
+    },
+    "parent": "tetra:scrolls/root",
+    "criteria": {
+        "find": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "tetra:scroll_rolled"
+                        ],
+                        "predicates": {
+                            "tetra:scroll_data": {
+                                "key": "sword/katana/katana_blade"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,44 @@
+{
+    "display": {
+        "icon": {
+            "id": "tetra:modular_sword"
+        },
+        "title": {
+            "translate": "tetra.advancements.art_of_forging.flamberge_upgrade.title"
+        },
+        "description": {
+            "translate": "tetra.advancements.art_of_forging.flamberge_upgrade.description"
+        }
+    },
+    "parent": "tetra:art_of_forging/katana_upgrade",
+    "criteria": {
+        "module": {
+            "trigger": "tetra:craft_module",
+            "conditions": {
+                "module": "sword/flamberge_blade",
+                "after": {
+                    "items": [
+                        "tetra:modular_sword"
+                    ]
+                }
+            }
+        },
+        "improvement": {
+            "trigger": "tetra:craft_improvement",
+            "conditions": {
+                "improvement": "sword/flamberge_blade",
+                "after": {
+                    "items": [
+                        "tetra:modular_sword"
+                    ]
+                }
+            }
+        }
+    },
+    "requirements": [
+        [
+            "module",
+            "improvement"
+        ]
+    ]
+}

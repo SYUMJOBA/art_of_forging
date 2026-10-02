@@ -3,10 +3,10 @@ package net.acetheeldritchking.art_of_forging.effects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.event.entity.living.LivingDamageEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.bus.api.SubscribeEvent;
 import se.mickelus.tetra.blocks.workbench.gui.WorkbenchStatsGui;
 import se.mickelus.tetra.gui.stats.StatsHelper;
 import se.mickelus.tetra.gui.stats.bar.GuiStatBar;
@@ -34,7 +34,7 @@ public class DismountingEffect {
     }
 
     @SubscribeEvent
-    public void onLivingAttackEvent(LivingDamageEvent event) {
+    public void onLivingAttackEvent(LivingDamageEvent.Pre event) {
         LivingEntity target = event.getEntity();
         Entity attackingEntity = event.getSource().getEntity();
 
@@ -45,7 +45,7 @@ public class DismountingEffect {
                 // Amount of extra damage to mounted entity
                 int level = item.getEffectLevel(heldStack, dismountingEffect);
 
-                float baseAmount = event.getAmount();
+                float baseAmount = event.getNewDamage();
                 // Gets bonus damage as percentage
                 float bonusDamage = getDecimalPercentage(level, baseAmount);
 
@@ -57,7 +57,7 @@ public class DismountingEffect {
                 if (level > 0) {
                     // If target is riding
                     if (target.isPassenger()) {
-                        event.setAmount(getExactPercentage(baseAmount, bonusDamage));
+                        event.setNewDamage(getExactPercentage(baseAmount, bonusDamage));
 
                         if (eff > (target.getRandom().nextFloat() * 100)) {
                             target.stopRiding();

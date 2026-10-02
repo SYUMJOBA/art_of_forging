@@ -1,0 +1,53 @@
+{
+    "display": {
+        "icon": {
+            "id": "tetra:scroll_rolled",
+            "components": {
+                "tetra:scroll_data": {
+                    "key": "sword/katana/murasama_blade",
+                    "details": "otherworldly",
+                    "intricate": false,
+                    "material": 2,
+                    "ribbon": "c52323",
+                    "glyphs": [
+                        6,
+                        7,
+                        13,
+                        15
+                    ],
+                    "schematics": [
+                        "tetra:sword/katana/murasama_blade"
+                    ]
+                }
+            }
+        },
+        "frame": "challenge",
+        "title": {
+            "translate": "tetra.advancements.scrolls.get_scroll_murasama.title"
+        },
+        "description": {
+            "translate": "tetra.advancements.scrolls.get_scroll_murasama.description"
+        },
+        "hidden": true
+    },
+    "parent": "tetra:scrolls/get_scroll_katana",
+    "criteria": {
+        "find": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "tetra:scroll_rolled"
+                        ],
+                        "predicates": {
+                            "tetra:scroll_data": {
+                                "key": "sword/katana/murasama_blade"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

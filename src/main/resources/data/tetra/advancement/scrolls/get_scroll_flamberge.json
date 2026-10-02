@@ -1,0 +1,52 @@
+{
+    "display": {
+        "icon": {
+            "id": "tetra:scroll_rolled",
+            "components": {
+                "tetra:scroll_data": {
+                    "key": "tetra/flamberge_blade",
+                    "details": "art_of_forging",
+                    "intricate": false,
+                    "material": 2,
+                    "ribbon": "ff9612",
+                    "glyphs": [
+                        6,
+                        15,
+                        4,
+                        7
+                    ],
+                    "schematics": [
+                        "tetra:sword/flamberge_blade"
+                    ]
+                }
+            }
+        },
+        "frame": "goal",
+        "title": {
+            "translate": "tetra.advancements.scrolls.get_scroll_flamberge.title"
+        },
+        "description": {
+            "translate": "tetra.advancements.scrolls.get_scroll_flamberge.description"
+        }
+    },
+    "parent": "tetra:scrolls/root",
+    "criteria": {
+        "find": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "tetra:scroll_rolled"
+                        ],
+                        "predicates": {
+                            "tetra:scroll_data": {
+                                "key": "tetra/flamberge_blade"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

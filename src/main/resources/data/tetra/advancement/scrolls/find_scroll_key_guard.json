@@ -1,0 +1,51 @@
+{
+    "display": {
+        "icon": {
+            "id": "tetra:scroll_rolled",
+            "components": {
+                "tetra:scroll_data": {
+                    "key": "sword/key_guard",
+                    "details": "art_of_forging",
+                    "intricate": false,
+                    "material": 1,
+                    "ribbon": "fae409",
+                    "glyphs": [
+                        0,
+                        1,
+                        9,
+                        4
+                    ],
+                    "schematics": [
+                        "tetra:sword/key_guard"
+                    ]
+                }
+            }
+        },
+        "title": {
+            "translate": "tetra.advancements.scrolls.find_scroll_key_guard.title"
+        },
+        "description": {
+            "translate": "tetra.advancements.scrolls.find_scroll_key_guard.description"
+        }
+    },
+    "parent": "tetra:scrolls/root",
+    "criteria": {
+        "find": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "tetra:scroll_rolled"
+                        ],
+                        "predicates": {
+                            "tetra:scroll_data": {
+                                "key": "sword/key_guard"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

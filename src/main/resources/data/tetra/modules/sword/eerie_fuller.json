@@ -1,36 +1,41 @@
 {
-    "replace": true,
-    "slots": [ "sword/fuller" ],
-    "type": "tetra:basic_major_module",
-    "variants": [
-        {
-            "key": "eerie_fuller/eerie_fuller",
-            "attributes": {
-                "generic.attack_speed": -0.20
-            },
-            "effects": {
-                "truesweep": 2,
-                "sculkTaint": [ 5, 0.05 ],
-                "intuit": 3,
-                "art_of_forging:sonic_shock": 25
-            },
-            "durability": 45,
-            "integrity": 1,
-            "magicCapacity": 300,
-            "glyph": {
-                "tint": "246f73",
-                "textureX": 72,
-                "textureY": 16
-            },
-            "models": [
-                {
-                    "location": "tetra:items/module/sword/fuller/eerie_fuller/eerie_fuller"
-                },
-                {
-                    "location": "tetra:items/module/sword/fuller/eerie_fuller/eerie_fuller_glow",
-                    "emission": 4
-                }
-            ]
-        }
-    ]
+ "replace": true,
+ "slots": [
+  "sword/fuller"
+ ],
+ "type": "tetra:basic_major_module",
+ "variants": [
+  {
+   "key": "eerie_fuller/eerie_fuller",
+   "attributes": {
+    "generic.attack_speed": -0.2
+   },
+   "effects": {
+    "truesweep": 2,
+    "sculkTaint": [
+     5,
+     0.05
+    ],
+    "intuit": 3,
+    "art_of_forging:sonic_shock": 25
+   },
+   "durability": 45,
+   "integrity": 1,
+   "magicCapacity": 300,
+   "glyph": {
+    "tint": "246f73",
+    "textureX": 72,
+    "textureY": 112
+   },
+   "models": [
+    {
+     "location": "tetra:item/module/sword/fuller/eerie_fuller/eerie_fuller"
+    },
+    {
+     "location": "tetra:item/module/sword/fuller/eerie_fuller/eerie_fuller_glow",
+     "emission": 4
+    }
+   ]
+  }
+ ]
 }

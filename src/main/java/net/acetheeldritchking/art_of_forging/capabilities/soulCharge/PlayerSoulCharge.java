@@ -1,8 +1,13 @@
 package net.acetheeldritchking.art_of_forging.capabilities.soulCharge;
 
+import com.mojang.serialization.Codec;
 import net.minecraft.nbt.CompoundTag;
 
 public class PlayerSoulCharge {
+    public static final Codec<PlayerSoulCharge> CODEC = Codec.INT.xmap(
+            i -> { PlayerSoulCharge p = new PlayerSoulCharge(); p.setSoulCharge(i); return p; },
+            PlayerSoulCharge::getSoulCharge);
+
     private int soul_charge;
     private final int MAX_CHARGE = 5;
     private final int MIN_CHARGE = 0;

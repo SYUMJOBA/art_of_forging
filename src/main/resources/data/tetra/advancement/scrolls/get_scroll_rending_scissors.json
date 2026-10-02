@@ -1,0 +1,55 @@
+{
+    "display": {
+        "icon": {
+            "id": "tetra:scroll_rolled",
+            "components": {
+                "tetra:scroll_data": {
+                    "key": "tetra/rending_scissor_complete",
+                    "details": "otherworldly",
+                    "intricate": false,
+                    "material": 2,
+                    "ribbon": "e32182",
+                    "glyphs": [
+                        1,
+                        15,
+                        2,
+                        13
+                    ],
+                    "schematics": [
+                        "tetra:sword/scissor_blade_left",
+                        "tetra:sword/scissor_blade_right",
+                        "tetra:sword/rending_scissor_complete"
+                    ]
+                }
+            }
+        },
+        "frame": "challenge",
+        "title": {
+            "translate": "tetra.advancements.scrolls.get_scroll_rending_scissors.title"
+        },
+        "description": {
+            "translate": "tetra.advancements.scrolls.get_scroll_rending_scissors.description"
+        },
+        "hidden": true
+    },
+    "parent": "tetra:scrolls/root",
+    "criteria": {
+        "find": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "tetra:scroll_rolled"
+                        ],
+                        "predicates": {
+                            "tetra:scroll_data": {
+                                "key": "tetra/rending_scissor_complete"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

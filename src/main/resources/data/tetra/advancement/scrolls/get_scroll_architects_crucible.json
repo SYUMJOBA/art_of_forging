@@ -1,0 +1,54 @@
+{
+    "display": {
+        "icon": {
+            "id": "tetra:scroll_rolled",
+            "components": {
+                "tetra:scroll_data": {
+                    "key": "sword/crucible/architects_crucible_blade",
+                    "details": "true_crucible",
+                    "intricate": true,
+                    "material": 2,
+                    "ribbon": "ff0042",
+                    "glyphs": [
+                        8,
+                        7,
+                        9,
+                        2
+                    ],
+                    "schematics": [
+                        "tetra:sword/crucible_blade",
+                        "tetra:sword/crucible/architects_crucible_blade"
+                    ]
+                }
+            }
+        },
+        "frame": "challenge",
+        "title": {
+            "translate": "tetra.advancements.scrolls.get_scroll_architects_crucible.title"
+        },
+        "description": {
+            "translate": "tetra.advancements.scrolls.get_scroll_architects_crucible.description"
+        },
+        "hidden": true
+    },
+    "parent": "tetra:scrolls/get_scroll_crucible",
+    "criteria": {
+        "find": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "tetra:scroll_rolled"
+                        ],
+                        "predicates": {
+                            "tetra:scroll_data": {
+                                "key": "sword/crucible/architects_crucible_blade"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,14 +1,16 @@
 package net.acetheeldritchking.art_of_forging.networking.packet;
 
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraftforge.network.NetworkEvent;
+import net.minecraft.world.entity.player.Player;
+import se.mickelus.mutil.network.AbstractPacket;
 
-import java.util.function.Supplier;
+public class LifeStealParticlesS2CPacket extends AbstractPacket {
+    private double xPos;
+    private double yPos;
+    private double zPos;
 
-public class LifeStealParticlesS2CPacket {
-    private final double xPos;
-    private final double yPos;
-    private final double zPos;
+    public LifeStealParticlesS2CPacket() {
+    }
 
     public LifeStealParticlesS2CPacket(double xPos, double yPos, double zPos) {
         this.xPos = xPos;
@@ -16,25 +18,23 @@ public class LifeStealParticlesS2CPacket {
         this.zPos = zPos;
     }
 
-    public LifeStealParticlesS2CPacket(FriendlyByteBuf buf) {
-        this.xPos = buf.readDouble();
-        this.yPos = buf.readDouble();
-        this.zPos = buf.readDouble();
-    }
-
+    @Override
     public void toBytes(FriendlyByteBuf buf) {
         buf.writeDouble(xPos);
         buf.writeDouble(yPos);
         buf.writeDouble(zPos);
     }
 
-    public boolean handle(Supplier<NetworkEvent.Context> supplier) {
-        NetworkEvent.Context context = supplier.get();
+    @Override
+    public void fromBytes(FriendlyByteBuf buf) {
+        this.xPos = buf.readDouble();
+        this.yPos = buf.readDouble();
+        this.zPos = buf.readDouble();
+    }
 
-        context.enqueueWork(() -> {
-            // Server to Client
-            LifeStealPacketHandler.doLifestealParticles(this.xPos, this.yPos, this.zPos);
-        });
-        return true;
+    @Override
+    public void handle(Player player) {
+        // Runs on the client main thread (server to client)
+        LifeStealPacketHandler.doLifestealParticles(this.xPos, this.yPos, this.zPos);
     }
 }

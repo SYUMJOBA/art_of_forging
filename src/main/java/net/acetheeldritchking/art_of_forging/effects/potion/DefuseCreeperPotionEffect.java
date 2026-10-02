@@ -11,17 +11,17 @@ public class DefuseCreeperPotionEffect extends MobEffect {
     }
 
     @Override
-    public void applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
+    public boolean applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
         // Defuses Creeper
         if (pLivingEntity instanceof Creeper creeper) {
             creeper.setSwellDir(-1);
         }
 
-        super.applyEffectTick(pLivingEntity, pAmplifier);
+        return super.applyEffectTick(pLivingEntity, pAmplifier);
     }
 
     @Override
-    public boolean isDurationEffectTick(int pDuration, int pAmplifier) {
+    public boolean shouldApplyEffectTickThisTick(int pDuration, int pAmplifier) {
         return true;
     }
 }

@@ -1,8 +1,13 @@
 package net.acetheeldritchking.art_of_forging.capabilities.subjugation;
 
+import com.mojang.serialization.Codec;
 import net.minecraft.nbt.CompoundTag;
 
 public class PlayerSubjugation {
+    public static final Codec<PlayerSubjugation> CODEC = Codec.INT.xmap(
+            i -> { PlayerSubjugation p = new PlayerSubjugation(); p.setSubjugation(i); return p; },
+            PlayerSubjugation::getSubjugation);
+
     private int subjugation;
     private final int MAX_SUBJUGATION = 10;
     private final int MIN_SUBJUGATION = 0;

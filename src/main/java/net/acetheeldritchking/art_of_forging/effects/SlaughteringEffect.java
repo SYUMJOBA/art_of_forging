@@ -3,10 +3,10 @@ package net.acetheeldritchking.art_of_forging.effects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.event.entity.living.LivingDamageEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.bus.api.SubscribeEvent;
 import se.mickelus.tetra.blocks.workbench.gui.WorkbenchStatsGui;
 import se.mickelus.tetra.gui.stats.StatsHelper;
 import se.mickelus.tetra.gui.stats.bar.GuiStatBar;
@@ -33,7 +33,7 @@ public class SlaughteringEffect {
     }
 
     @SubscribeEvent
-    public void onLivingAttackEvent(LivingDamageEvent event) {
+    public void onLivingAttackEvent(LivingDamageEvent.Pre event) {
         Entity attackingEntity = event.getSource().getEntity();
         LivingEntity target = event.getEntity();
 
@@ -48,7 +48,7 @@ public class SlaughteringEffect {
                 float eff = item.getEffectEfficiency(heldStack, slaughteringEffect);
 
                 // Base attack damage
-                float baseAmount = event.getAmount();
+                float baseAmount = event.getNewDamage();
                 // Bonus damage as a percentage
                 float bonusDamage = getDecimalPercentage(level, baseAmount);
 
@@ -62,7 +62,7 @@ public class SlaughteringEffect {
 
                 if (level > 0 && eff <= healthPercentage) {
                     //System.out.println("Applying bonus...");
-                    event.setAmount(getExactPercentage(baseAmount, bonusDamage));
+                    event.setNewDamage(getExactPercentage(baseAmount, bonusDamage));
                 }
             }
         }

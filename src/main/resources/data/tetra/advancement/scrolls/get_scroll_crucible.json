@@ -1,0 +1,51 @@
+{
+    "display": {
+        "icon": {
+            "id": "tetra:scroll_rolled",
+            "components": {
+                "tetra:scroll_data": {
+                    "key": "tetra/crucible_blade",
+                    "details": "art_of_forging",
+                    "intricate": false,
+                    "material": 2,
+                    "ribbon": "ff1e00",
+                    "glyphs": [
+                        8,
+                        7,
+                        9,
+                        2
+                    ],
+                    "schematics": [
+                        "tetra:sword/crucible_blade"
+                    ]
+                }
+            }
+        },
+        "title": {
+            "translate": "tetra.advancements.scrolls.get_scroll_crucible.title"
+        },
+        "description": {
+            "translate": "tetra.advancements.scrolls.get_scroll_crucible.description"
+        }
+    },
+    "parent": "tetra:scrolls/root",
+    "criteria": {
+        "find": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "tetra:scroll_rolled"
+                        ],
+                        "predicates": {
+                            "tetra:scroll_data": {
+                                "key": "tetra/crucible_blade"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

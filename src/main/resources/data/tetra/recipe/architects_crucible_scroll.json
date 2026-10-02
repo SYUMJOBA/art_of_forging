@@ -1,0 +1,41 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "art_of_forging:mark_of_the_architect"
+    },
+    {
+      "type": "tetra:scroll",
+      "key": "tetra/crucible_blade",
+      "schematics": [
+        ""
+      ],
+      "intricate": false,
+      "material": 2,
+      "ribbon": "ff1e00"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tetra:scroll_rolled",
+    "components": {
+      "tetra:scroll_data": {
+        "key": "sword/crucible/architects_crucible_blade",
+        "schematics": [
+          "tetra:sword/crucible_blade",
+          "tetra:sword/crucible/architects_crucible_blade"
+        ],
+        "intricate": true,
+        "details": "true_crucible",
+        "material": 2,
+        "ribbon": "ff0042",
+        "glyphs": [
+          8,
+          7,
+          9,
+          2
+        ]
+      }
+    }
+  }
+}

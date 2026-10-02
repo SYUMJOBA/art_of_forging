@@ -6,7 +6,6 @@ import net.acetheeldritchking.art_of_forging.effects.SoulChargedEffect;
 import net.acetheeldritchking.art_of_forging.effects.SubjugationEffect;
 import net.acetheeldritchking.art_of_forging.mixins.tetra.ItemModularHandheldAccessor;
 import net.minecraft.world.entity.EntityType;
-import net.minecraftforge.registries.ForgeRegistries;
 import se.mickelus.tetra.effect.ChargedAbilityEffect;
 import se.mickelus.tetra.effect.ItemEffect;
 
@@ -328,7 +327,7 @@ public class EffectGuiStats {
 
     // Bosses
     public static boolean isBossEntity(EntityType<?> entity) {
-        return Objects.requireNonNull(ForgeRegistries.ENTITY_TYPES.tags()).getTag(BOSS_ENTITIES).contains(entity);
+        return entity.builtInRegistryHolder().is(BOSS_ENTITIES);
     }
 
     // Percentage Math

@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "ff",
+        "ff"
+    ],
+    "key": {
+        "f": {
+            "item": "art_of_forging:forged_steel_ingot"
+        }
+    },
+    "result": {
+        "count": 4,
+        "id": "tetra:forged_wall"
+    }
+}

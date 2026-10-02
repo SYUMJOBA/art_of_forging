@@ -1,0 +1,44 @@
+{
+    "display": {
+        "icon": {
+            "id": "tetra:modular_sword"
+        },
+        "title": {
+            "translate": "tetra.advancements.upgrades.executioner_upgrade.title"
+        },
+        "description": {
+            "translate": "tetra.advancements.upgrades.executioner_upgrade.description"
+        }
+    },
+    "parent": "tetra:upgrades/sword_upgrade",
+    "criteria": {
+        "module": {
+            "trigger": "tetra:craft_module",
+            "conditions": {
+                "module": "sword/executioner_blade",
+                "after": {
+                    "items": [
+                        "tetra:modular_sword"
+                    ]
+                }
+            }
+        },
+        "improvement": {
+            "trigger": "tetra:craft_improvement",
+            "conditions": {
+                "improvement": "sword/executioner_blade",
+                "after": {
+                    "items": [
+                        "tetra:modular_sword"
+                    ]
+                }
+            }
+        }
+    },
+    "requirements": [
+        [
+            "module",
+            "improvement"
+        ]
+    ]
+}

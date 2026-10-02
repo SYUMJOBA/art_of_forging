@@ -1,0 +1,49 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " c ",
+    "rbp",
+    " a "
+  ],
+  "key": {
+    "a": {
+      "item": "art_of_forging:life_fiber"
+    },
+    "b": {
+      "item": "minecraft:writable_book"
+    },
+    "r": {
+      "item": "art_of_forging:rending_scissor_red"
+    },
+    "p": {
+      "item": "art_of_forging:rending_scissor_purple"
+    },
+    "c": {
+      "item": "art_of_forging:life_fiber"
+    }
+  },
+  "result": {
+    "count": 1,
+    "id": "tetra:scroll_rolled",
+    "components": {
+      "tetra:scroll_data": {
+        "key": "tetra/rending_scissor_complete",
+        "schematics": [
+          "tetra:sword/scissor_blade_left",
+          "tetra:sword/scissor_blade_right",
+          "tetra:sword/rending_scissor_complete"
+        ],
+        "intricate": false,
+        "details": "otherworldly",
+        "material": 2,
+        "ribbon": "e32182",
+        "glyphs": [
+          1,
+          15,
+          2,
+          13
+        ]
+      }
+    }
+  }
+}

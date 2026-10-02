@@ -3,10 +3,10 @@ package net.acetheeldritchking.art_of_forging.effects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.event.entity.living.LivingDamageEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.bus.api.SubscribeEvent;
 import se.mickelus.tetra.blocks.workbench.gui.WorkbenchStatsGui;
 import se.mickelus.tetra.gui.stats.bar.GuiStatBar;
 import se.mickelus.tetra.gui.stats.getter.IStatGetter;
@@ -33,7 +33,7 @@ public class CavalryEffect {
     }
 
     @SubscribeEvent
-    public void onLivingAttackEvent(LivingDamageEvent event) {
+    public void onLivingAttackEvent(LivingDamageEvent.Pre event) {
         Entity attackingEntity = event.getSource().getEntity();
 
         if (attackingEntity instanceof LivingEntity attacker) {
@@ -43,13 +43,13 @@ public class CavalryEffect {
                 // Amount of extra damage while riding entity
                 int level = item.getEffectLevel(heldStack, cavalryEffect);
 
-                float baseAmount = event.getAmount();
+                float baseAmount = event.getNewDamage();
                 // Gets bonus damage as percentage
                 float bonusDamage = getDecimalPercentage(level, baseAmount);
 
                 // Add bonus damage while riding entity
                 if (level > 0 && attacker.isPassenger()) {
-                    event.setAmount(getExactPercentage(baseAmount, bonusDamage));
+                    event.setNewDamage(getExactPercentage(baseAmount, bonusDamage));
                 }
             }
         }

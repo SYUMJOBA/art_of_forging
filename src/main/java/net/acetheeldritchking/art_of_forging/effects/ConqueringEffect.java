@@ -1,6 +1,7 @@
 package net.acetheeldritchking.art_of_forging.effects;
 
-import net.acetheeldritchking.art_of_forging.capabilities.conquer.PlayerConquerProvider;
+import net.acetheeldritchking.art_of_forging.AoFAttachments;
+
 import net.acetheeldritchking.art_of_forging.effects.potion.PotionEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -8,12 +9,12 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.entity.living.LivingDamageEvent;
-import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.bus.api.SubscribeEvent;
 import se.mickelus.tetra.blocks.workbench.gui.WorkbenchStatsGui;
 import se.mickelus.tetra.gui.stats.bar.GuiStatBar;
 import se.mickelus.tetra.gui.stats.getter.IStatGetter;
@@ -51,7 +52,7 @@ public class ConqueringEffect {
                 int level = item.getEffectLevel(heldStack, conqueringEffect);
 
                 if (level > 0 && !attacker.level().isClientSide() && attacker instanceof Player player) {
-                    player.getCapability(PlayerConquerProvider.PLAYER_CONQUER).ifPresent(conquer ->
+                    java.util.Optional.of(player.getData(AoFAttachments.CONQUER)).ifPresent(conquer ->
                     {
                         // System.out.println("Added conquer, current level is: " + conquer.getConquer());
                         conquer.addConquer(1);
@@ -63,7 +64,7 @@ public class ConqueringEffect {
 
     // Apply debuffs to entities when full conquer
     @SubscribeEvent
-    public void onLivingAttackEvent(LivingDamageEvent event) {
+    public void onLivingAttackEvent(LivingDamageEvent.Pre event) {
         Entity attackingEntity = event.getSource().getEntity();
         LivingEntity target = event.getEntity();
 
@@ -83,7 +84,7 @@ public class ConqueringEffect {
 
                     // Increase weakness when full conquer
                     if (!attacker.level().isClientSide() && attacker instanceof Player player) {
-                        player.getCapability(PlayerConquerProvider.PLAYER_CONQUER).ifPresent(conquer ->
+                        java.util.Optional.of(player.getData(AoFAttachments.CONQUER)).ifPresent(conquer ->
                         {
                             if (conquer.getConquer() == 5) {
                                 target.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, eff * 20, 1,
@@ -98,8 +99,8 @@ public class ConqueringEffect {
 
     // Apply strength & severing to player when full conquer
     @SubscribeEvent
-    public void onPlayerTickEvent(TickEvent.PlayerTickEvent event) {
-        Player player = event.player;
+    public void onPlayerTickEvent(PlayerTickEvent.Post event) {
+        Player player = event.getEntity();
         ItemStack heldStack = player.getMainHandItem();
 
         // Every second
@@ -114,10 +115,10 @@ public class ConqueringEffect {
                 player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, eff * 20, 0,
                         true, true, true));
 
-                player.getCapability(PlayerConquerProvider.PLAYER_CONQUER).ifPresent(conquer ->
+                java.util.Optional.of(player.getData(AoFAttachments.CONQUER)).ifPresent(conquer ->
                 {
                     if (conquer.getConquer() == 5) {
-                        player.addEffect(new MobEffectInstance(PotionEffects.MORTAL_WOUNDS.get(), 20, level,
+                        player.addEffect(new MobEffectInstance(PotionEffects.MORTAL_WOUNDS, 20, level,
                                 false, false, false));
                         player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, eff * 20, 1,
                                 true, true, true));

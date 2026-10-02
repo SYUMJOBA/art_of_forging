@@ -1,8 +1,8 @@
 package net.acetheeldritchking.art_of_forging.effects;
 
 import com.mojang.authlib.GameProfile;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtUtils;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.item.component.ResolvableProfile;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
@@ -15,10 +15,10 @@ import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.event.entity.living.LivingDropsEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
+import net.neoforged.bus.api.SubscribeEvent;
 import se.mickelus.tetra.blocks.workbench.gui.WorkbenchStatsGui;
 import se.mickelus.tetra.gui.stats.bar.GuiStatBar;
 import se.mickelus.tetra.gui.stats.getter.IStatGetter;
@@ -72,7 +72,7 @@ public class BeheadingEffect {
                         // Looked at how Tetra Pak did this
                         headDrop = new ItemStack(Items.PLAYER_HEAD);
                         GameProfile profile = player.getGameProfile();
-                        headDrop.getOrCreateTag().put("SkullOwner", NbtUtils.writeGameProfile(new CompoundTag(), profile));
+                        headDrop.set(DataComponents.PROFILE, new ResolvableProfile(profile));
                     }
 
                     // Drop
